@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 3.0.0
+dependencies:
+- name: alfresco-common
+  repository: https://kubernetes-charts.alfresco.com/incubator
+  version: 0.1.0-SNAPSHOT
+description: A Helm chart for deploying Alfresco Elasticsearch connector
+name: alfresco-elasticsearch-connector
+type: application
+version: 0.1.0

@@ -1,0 +1,30 @@
+dependencies:
+- name: alfresco-common
+  repository: https://kubernetes-charts.alfresco.com/stable
+  version: 0.1.0
+- name: postgresql
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami/
+  version: 10.16.2
+- name: postgresql
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami/
+  version: 10.16.2
+- name: common
+  repository: https://activiti.github.io/activiti-cloud-helm-charts
+  version: 7.3.0
+- name: activemq
+  repository: ""
+  version: 2.1.0
+- name: alfresco-search
+  repository: ""
+  version: 1.0.4
+- name: alfresco-elasticsearch-connector
+  repository: ""
+  version: 0.1.0
+- name: alfresco-sync-service
+  repository: ""
+  version: 3.0.9
+- name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.10.1
+digest: sha256:9a8f8ddcaab3e1ac25bc8bc01205fc849a9e45df5df1ea65d8cf1a895284771a
+generated: "2022-11-16T17:21:56.300252383Z"

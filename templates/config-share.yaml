@@ -1,0 +1,25 @@
+# Defines the properties required by the share app
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "content-services.shortname" . }}-share-configmap
+  labels:
+    {{- include "share.labels" . | nindent 4 }}
+data:
+  {{- $alfUrl := include "share.url" $ -}}
+  {{- $alfproxy := printf "-Dalfresco.proxy=%s" $alfUrl }}
+  REPO_HOST: "{{ template "content-services.shortname" . }}-repository"
+  REPO_PORT: "{{ .Values.repository.service.externalPort }}"
+  CSRF_FILTER_REFERER: "{{ $alfUrl }}/.*"
+  CSRF_FILTER_ORIGIN: "{{ $alfUrl }}"
+  # The JAVA_OPTS defined in the values.yaml file for the "share" are set here using proper quotes
+  {{- if .Values.share.environment.JAVA_OPTS }}
+  JAVA_OPTS: {{ tpl (printf "%s %s" (index .Values "share" "environment" "JAVA_OPTS") $alfproxy) $ | quote }}
+  {{- else }}
+  JAVA_OPTS: "{{ $alfproxy }}"
+  {{- end }}
+  {{- if .Values.share.environment }}
+  {{- range $key, $val := .Values.share.environment }}
+  {{ $key }}: {{ tpl $val $ | quote }}
+  {{- end }}
+  {{- end }}
